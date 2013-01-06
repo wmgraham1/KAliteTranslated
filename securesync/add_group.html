@@ -1,0 +1,22 @@
+{% extends 'base_distributed.html' %}
+
+{% block title %}Add Group{% endblock title %}
+
+{% block content %}
+<h2>Add a new group</h2>
+
+<form method="post" class="basic-form">
+    <p><label>Facility: </label>{{ facility }} <a href="?facility=select"> (Select a different facility)</a></p>
+
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create group" class="submit"/>
+</form>
+
+<script>
+$('#facility_group').change(function(){
+    window.location.href = $("#facility_group option:selected").val();
+});
+</script>
+
+{% endblock content %}

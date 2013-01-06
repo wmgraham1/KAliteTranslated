@@ -1,0 +1,32 @@
+{% extends 'base_distributed.html' %}
+{% block addteacher_selected %}{% if teacher %}selected{% endif %}{% endblock addteacher_selected %}
+{% block addstudent_selected %}{% if not teacher %}selected{% endif %}{% endblock addstudent_selected %}
+{% block signup_selected %}{% if not request.admin %}selected{% endif %}{% endblock signup_selected %}
+
+{% block title %}Add facility user{% endblock title %}
+
+{% block content %}
+
+
+<form method="post" class="basic-form">
+{% csrf_token %}
+<h1>{% if request.is_admin %}
+		Add a new {% if teacher %}teacher{% else %}student{% endif %}
+    {% else %}
+        Sign up for an account
+    {% endif %}
+</h1>
+<p><label>Facility: </label>{{ facility }} {% if not singlefacility or request.is_admin %}<a href="?facility=select"> (Select a different facility)</a></p>{% endif %}
+{{ form.as_p }}
+<input type="submit" value="Create user" class="submit"/>
+</form>
+
+<script>
+{% if request.is_admin %}
+$('#id_group').parent().find(".helptext").html('(<a href="{% url add_group %}?facility={{facility.id}}">Add a new Group</a>)');
+{% endif %}
+{% if not request.is_admin %}
+$('#id_is_teacher').parent().hide();
+{% endif %}
+</script>
+{% endblock content %}
