@@ -33,7 +33,7 @@
 
 <span class="dropdown topic-browser-dropdown">
     <a href="{% url homepage %}" id="nav_watch" class="watch-navlink not-admin-only {% block watch_selected %}{% endblock watch_selected %}" title="Watch Videos">Watch</a>
-    <a href="{% url exercise_dashboard %}" id="nav_practice" class="practice-navlink not-admin-only {% block practice_selected %}{% endblock practice_selected %}" title="Practice Lessons">Practice</a>
+    <a href="{% url exercise_dashboard %}" id="nav_practice" class="practice-navlink not-admin-only {% block practice_selected %}{% endblock practice_selected %} title="Practice Lessons"">Practice</a>
     <a href="{% url add_facility_student %}" id="nav_addstudent" class="admin-only {% block addstudent_selected %}{% endblock addstudent_selected %}" title="Add a student">Add Student</a>
     <a href="{% url add_facility_teacher %}" id="nav_addteacher" class="admin-only {% block addteacher_selected %}{% endblock addteacher_selected %}" title="Add a teacher">Add Teacher</a>
     <a href="/admin" id="nav_admin" class="django-user-only {% block admin_selected %}{% endblock admin_selected %}" title="Visit the admin panel">Admin</a>
